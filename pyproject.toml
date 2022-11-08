@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "python-tec-test"
+version = "0.1.0"
+description = "Technical test example in python"
+authors = ["Shaun Wildman shaun.wildman@gmail.com"]
+readme = "README.md"
+packages = [{include = "python-tec-test"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^7.2.0"
+lyricsgenius = "^3.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.2.0"
+coverage = "^5.5"
+jsonpath-rw = "^1.4.0"
+requests = "^2.27.1"
