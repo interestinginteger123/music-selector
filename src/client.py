@@ -1,6 +1,5 @@
 import json
 import logging
-import lyricsgenius
 
 ARTIST_SONGS = '/ox/3.0'
 ARTIST_LIBRARY = '/ox/4.0'

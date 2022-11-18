@@ -1,4 +1,3 @@
-import json
 import logging
 import lyricsgenius
 
@@ -16,14 +15,14 @@ class LyricsClient(object):
         self._genius = lyricsgenius.Genius(access_token)
         self.logger = logging.getLogger()
 
-    def log_request(self, response):
+    def log_request(self, response) -> None:
         try:
-            self.logger.debug(json.loads(response.api_path))
+            self.logger.debug(response.api_path)
         except ValueError:
             self.logger.debug("%s" % response.api_path)
         self.logger.debug('{0:=<45}'.format('lyrics genious call finished'))
     
-    def _search_artist_song_lyrics(self, artist_name, song):
+    def _search_artist_song_lyrics(self, artist_name, song) -> str:
         if artist_name:
             response = self._genius.search_song(artist_name, song.title)
             self.log_request(response)
@@ -36,22 +35,10 @@ class LyricsClient(object):
         """Call for artist request."""
 
         if artist:
-            response = self._genius.search_artist(artist, max_songs=max_songs, sort="title")
+            response = self._genius.search_artist(artist, max_songs=max_songs, sort='title')
             self.log_request(response)
             return {'songs': response.songs, 'artist': response.name}
         else:
             msg = 'No artist parsed to request'
             raise NoArtistError(msg)
-        
-
-        
-
-        
-
-
-
-
-
-
-
-
+    
